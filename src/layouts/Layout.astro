@@ -1,0 +1,99 @@
+---
+import "../styles/global.css";
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "Portfolio de proyectos - Centro de Proyectos" } =
+	Astro.props;
+
+import Navbar from "../components/Navbar";
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+
+		<!-- Theme Init Script -->
+		<script is:inline>
+			const theme = (() => {
+				if (
+					typeof localStorage !== "undefined" &&
+					localStorage.getItem("theme")
+				) {
+					return localStorage.getItem("theme");
+				}
+				if (window.matchMedia("(prefers-color-scheme: light)").matches) {
+					return "light";
+				}
+				return "dark";
+			})();
+
+			if (theme === "light") {
+				document.documentElement.classList.add("light");
+			} else {
+				document.documentElement.classList.remove("light");
+			}
+		</script>
+
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+			rel="stylesheet"
+		/>
+
+		<title>{title}</title>
+	</head>
+	<body class="selection:bg-blue-500/30 overflow-x-hidden">
+		<Navbar client:load />
+
+		<!-- Spotlight Background -->
+		<div
+			id="spotlight"
+			class="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300 opacity-0 md:opacity-100"
+			style="background: radial-gradient(600px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), var(--spotlight-color, rgba(59, 130, 246, 0.06)), transparent 40%);"
+		>
+		</div>
+
+		<slot />
+
+		<script>
+			const spotlight = document.getElementById("spotlight");
+
+			window.addEventListener("mousemove", (e) => {
+				if (spotlight) {
+					spotlight.style.setProperty("--mouse-x", `${e.clientX}px`);
+					spotlight.style.setProperty("--mouse-y", `${e.clientY}px`);
+					spotlight.style.opacity = "1";
+				}
+			});
+
+			window.addEventListener("mouseleave", () => {
+				if (spotlight) spotlight.style.opacity = "0";
+			});
+		</script>
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		--accent: 136, 58, 234;
+		--accent-light: 224, 204, 250;
+		--accent-dark: 49, 10, 101;
+		--accent-gradient: linear-gradient(
+			45deg,
+			rgb(var(--accent)),
+			rgb(var(--accent-light)) 30%,
+			white 60%
+		);
+	}
+</style>

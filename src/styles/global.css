@@ -1,0 +1,78 @@
+@import "tailwindcss";
+@plugin "@midudev/tailwind-animations";
+
+@custom-variant light (&:where(.light, .light *));
+
+@theme {
+  --color-background: var(--bg-color);
+  --color-surface: var(--card-bg);
+  --color-border: var(--border-color);
+  --color-text-main: var(--text-color);
+
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    --bg-color: #030303;
+    --text-color: theme('colors.zinc.100');
+    --subtext-color: theme('colors.zinc.400');
+    --card-bg: theme('colors.zinc.900 / 0.4');
+    --border-color: theme('colors.zinc.800 / 0.5');
+    --fade-color: #030303;
+    --spotlight-color: rgba(59, 130, 246, 0.05);
+    --hero-bg: linear-gradient(to bottom right, #0a0a0a, #030303);
+  }
+
+  :root.light {
+    color-scheme: light;
+    --bg-color: #f8fafc;
+    --text-color: theme('colors.zinc.900');
+    --subtext-color: theme('colors.zinc.600');
+    --card-bg: theme('colors.white');
+    --border-color: theme('colors.zinc.200');
+    --fade-color: #f8fafc;
+    --spotlight-color: rgba(59, 130, 246, 0.02);
+    --hero-bg: linear-gradient(to bottom right, theme('colors.slate.50'), theme('colors.slate.100'));
+  }
+
+  body {
+    @apply font-sans antialiased transition-colors duration-500 overflow-x-hidden;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-zinc-800 rounded-full border-4 border-solid border-background;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-zinc-700;
+}
+
+@keyframes infinite-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-infinite-scroll {
+  animation: infinite-scroll 25s linear infinite;
+}
