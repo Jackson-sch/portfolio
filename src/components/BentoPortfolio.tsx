@@ -3,40 +3,9 @@ import BentoCard from './BentoCard';
 import ProjectModal from './ProjectModal';
 import DynamicStatusCard from './DynamicStatusCard';
 import { Github, Linkedin, Mail, ArrowUpRight, ExternalLink, Globe, Sparkles } from 'lucide-react';
+import { NextjsLogo, AstroLogo, TailwindLogo, PrismaLogo, ReactLogo } from './TechLogos';
 
-const NextjsLogo = () => (
-  <svg width="14" height="14" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M64 0C28.6599 0 0 28.6599 0 64C0 99.3401 28.6599 128 64 128C99.3401 128 128 99.3401 128 64C128 28.6599 99.3401 0 64 0ZM109.282 101.405L65.4852 45.4516V95.7891H56.5161V32.2109H65.4852L101.373 78.4355C104.536 74.0531 106.452 68.75 106.452 63.0323C106.452 39.5484 87.4194 20.5161 64 20.5161C40.5806 20.5161 21.5484 39.5484 21.5484 63.0323C21.5484 86.5161 40.5806 105.548 64 105.548C74.3871 105.548 83.8406 101.815 91.1371 95.6371L109.282 101.405Z" fill="currentColor" />
-  </svg>
-);
-
-const AstroLogo = () => (
-  <svg width="14" height="14" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M128 0L32 256H96L128 176L160 256H224L128 0Z" fill="currentColor" />
-    <path d="M128 64L104 128H152L128 64Z" fill="currentColor" />
-  </svg>
-);
-
-const TailwindLogo = () => (
-  <svg width="14" height="14" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M64 32C48 32 38 40 34 56C40 48 48 45 58 47C63.7073 48.1415 67.7854 52.2854 72.2683 56.8402C79.5732 64.261 88.261 73.1098 104 73.1098C120 73.1098 130 65.1098 134 49.1098C128 57.1098 120 60.1098 110 58.1098C104.293 56.9683 100.215 52.8244 95.7317 48.2695C88.4268 40.8488 79.739 32 64 32ZM34 73C18 73 8 81 4 97C10 89 18 86 28 88C33.7073 89.1415 37.7854 93.2854 42.2683 97.8402C49.5732 105.261 58.261 114.11 74 114.11C90 114.11 100 106.11 104 90.11C98 98.11 90 101.11 80 99.11C74.2927 97.9683 70.2146 93.8244 65.7317 89.2695C58.4268 81.8488 49.739 73 34 73Z" fill="currentColor" />
-  </svg>
-);
-
-const PrismaLogo = () => (
-  <svg width="14" height="14" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M128 0L16 192L128 256L240 192L128 0Z" fill="currentColor" />
-  </svg>
-);
-
-const ReactLogo = () => (
-  <svg width="14" height="14" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="64" cy="64" r="10" fill="currentColor" />
-    <ellipse cx="64" cy="64" rx="60" ry="20" stroke="currentColor" strokeWidth="6" fill="none" />
-    <ellipse cx="64" cy="64" rx="60" ry="20" stroke="currentColor" strokeWidth="6" fill="none" transform="rotate(60 64 64)" />
-    <ellipse cx="64" cy="64" rx="60" ry="20" stroke="currentColor" strokeWidth="6" fill="none" transform="rotate(120 64 64)" />
-  </svg>
-);
+import { projects } from '../data/projects';
 
 const TechBadge = ({ name, icon }: { name: string, icon: React.ReactNode }) => (
   <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-surface border border-border hover:border-zinc-400 light:hover:border-zinc-600 transition-colors">
@@ -47,14 +16,12 @@ const TechBadge = ({ name, icon }: { name: string, icon: React.ReactNode }) => (
   </div>
 );
 
-import { projects } from '../data/projects';
-
 export default function BentoPortfolio({ name, role, subrole }: { name: string, role: string, subrole: string }) {
   const [selectedProject, setSelectedProject] = useState<any>(null);
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-7xl mx-auto auto-rows-[200px]">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-7xl mx-auto auto-rows-[minmax(200px,auto)] md:auto-rows-[200px]">
         {/* Row 1: Personal Impact */}
         <BentoCard colSpan={2} rowSpan={2} className="flex flex-col justify-end gap-4 bg-(--hero-bg) animate-blurred-fade-in animate-duration-slow">
           <div className="space-y-2">
@@ -66,7 +33,7 @@ export default function BentoPortfolio({ name, role, subrole }: { name: string, 
               Astro v5 Portfolio
             </div>
             <h1 className="text-4xl md:text-5xl font-black leading-tight">
-              <span className="text-white light:text-zinc-900">Hola, soy</span> <span className="bg-linear-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Jackson Sebastian</span>.
+              <span className="text-white light:text-zinc-900">Hola, soy</span> <span className="bg-linear-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">{name}</span>.
               <br />
               <span className="text-white light:text-zinc-900">{role}</span>
             </h1>
@@ -146,7 +113,7 @@ export default function BentoPortfolio({ name, role, subrole }: { name: string, 
         </BentoCard>
 
         {/* Row 3: Stylized & Mobile */}
-        <BentoCard colSpan={1} rowSpan={2} noPadding className="relative bg-surface flex flex-col justify-end overflow-hidden animate-blurred-fade-in animate-duration-slow animate-delay-600 group">
+        <BentoCard colSpan={1} rowSpan={2} noPadding className="relative bg-surface flex flex-col justify-end overflow-hidden animate-blurred-fade-in animate-duration-slow animate-delay-600 group min-h-[400px] md:min-h-0">
           <img src="/images/me.png" alt="Jackson Sebastian" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 pointer-events-none" />
           <div className="absolute inset-0 bg-linear-to-t from-zinc-950/90 via-zinc-950/20 to-transparent opacity-80 light:opacity-40"></div>
           <div className="p-6 relative z-10">
@@ -154,8 +121,8 @@ export default function BentoPortfolio({ name, role, subrole }: { name: string, 
               <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
               <span className="text-[10px] font-bold text-white light:text-zinc-900 uppercase tracking-widest font-mono">En Línea</span>
             </div>
-            <h3 className="text-xl font-bold text-white light:text-zinc-900 tracking-tight">Jackson Sebastian</h3>
-            <p className="text-zinc-300 light:text-zinc-600 text-xs font-mono">Fullstack Developer</p>
+            <h3 className="text-xl font-bold text-white light:text-zinc-900 tracking-tight">{name}</h3>
+            <p className="text-zinc-300 light:text-zinc-600 text-xs font-mono">{role}</p>
           </div>
         </BentoCard>
 
@@ -206,31 +173,17 @@ export default function BentoPortfolio({ name, role, subrole }: { name: string, 
           </div>
         </BentoCard>
 
-        <BentoCard colSpan={2} rowSpan={1} noPadding className="bg-surface/50 dark:bg-zinc-900/30 border-border dark:border-zinc-800 flex flex-col items-center justify-center overflow-hidden animate-blurred-fade-in animate-duration-slow animate-delay-1200">
-          <div className="relative w-full overflow-hidden flex flex-col gap-10 items-center h-full pb-6">
-            <h3 className="text-[10px] font-mono text-center text-zinc-500 light:text-zinc-600 uppercase tracking-widest mb-3 pt-6">Mastered Tools</h3>
-            <div className="flex gap-12 animate-infinite-scroll px-12">
-              <div className="flex items-center gap-12 shrink-0">
-                <TechBadge name="Next.js 15" icon={<NextjsLogo />} />
-                <TechBadge name="Astro v5" icon={<AstroLogo />} />
-                <TechBadge name="Tailwind v4" icon={<TailwindLogo />} />
-                <TechBadge name="Prisma" icon={<PrismaLogo />} />
-                <TechBadge name="Gemini IA" icon={<Sparkles size={14} className="text-indigo-400" />} />
-                <TechBadge name="React 19" icon={<ReactLogo />} />
-              </div>
-              <div className="flex items-center gap-12 shrink-0" aria-hidden="true">
-                <TechBadge name="Next.js 15" icon={<NextjsLogo />} />
-                <TechBadge name="Astro v5" icon={<AstroLogo />} />
-                <TechBadge name="Tailwind v4" icon={<TailwindLogo />} />
-                <TechBadge name="Prisma" icon={<PrismaLogo />} />
-                <TechBadge name="Gemini IA" icon={<Sparkles size={14} className="text-indigo-400 light:text-indigo-600" />} />
-                <TechBadge name="React 19" icon={<ReactLogo />} />
-              </div>
+        <BentoCard colSpan={2} rowSpan={1} className="flex flex-col items-center justify-center animate-blurred-fade-in animate-duration-slow animate-delay-1200">
+          <div className="w-full flex flex-col items-center justify-center h-full">
+            <h3 className="text-[10px] font-mono text-center text-zinc-500 light:text-zinc-600 uppercase tracking-widest mb-6">Mastered Tools</h3>
+            <div className="flex flex-wrap justify-center gap-4 px-4 w-full max-w-4xl">
+              <TechBadge name="Next.js 15" icon={<NextjsLogo />} />
+              <TechBadge name="Astro v5" icon={<AstroLogo />} />
+              <TechBadge name="Tailwind v4" icon={<TailwindLogo />} />
+              <TechBadge name="Prisma" icon={<PrismaLogo />} />
+              <TechBadge name="Gemini IA" icon={<Sparkles size={14} className="text-indigo-500" />} />
+              <TechBadge name="React 19" icon={<ReactLogo />} />
             </div>
-            {/* Side Fades - now truly at the edge */}
-            {/* Side Fades - now using theme variables with correct v4 syntax */}
-            <div className="absolute inset-y-0 left-0 w-32 bg-linear-to-r from-(--fade-color) via-(--fade-color)/20 to-transparent z-10 pointer-events-none"></div>
-            <div className="absolute inset-y-0 right-0 w-32 bg-linear-to-l from-(--fade-color) via-(--fade-color)/20 to-transparent z-10 pointer-events-none"></div>
           </div>
         </BentoCard>
       </div>

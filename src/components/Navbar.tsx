@@ -28,7 +28,7 @@ export default function Navbar() {
     <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 p-1.5 rounded-2xl bg-zinc-900/50 light:bg-white/70 backdrop-blur-xl border border-zinc-800 light:border-zinc-200 shadow-2xl animate-fade-in-down animate-duration-slow">
       <a href="#" className="flex items-center gap-2 px-2 py-1.5 rounded-xl hover:bg-zinc-800/50 light:hover:bg-zinc-100/50 transition-colors group cursor-pointer" aria-label="Home">
         <Logo />
-        <span className="text-xs font-bold tracking-tight text-white light:text-zinc-900 sr-only md:not-sr-only md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 -ml-2 group-hover:ml-0">
+        <span className="text-xs font-bold tracking-tight text-white light:text-zinc-900 sr-only md:not-sr-only md:group-hover:opacity-100 transition-opacity duration-300 -ml-2 group-hover:ml-0">
           SEBASTIAN
         </span>
       </a>
