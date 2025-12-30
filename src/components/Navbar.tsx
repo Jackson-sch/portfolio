@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Sun, Moon, Github, Linkedin, Mail } from 'lucide-react';
+import { Sun, Moon, Github, Linkedin, Mail, Home, Briefcase } from 'lucide-react';
 
 import { Logo } from './Logo';
 
@@ -36,15 +36,9 @@ export default function Navbar() {
       <div className="w-px h-4 bg-zinc-800 light:bg-zinc-200 mx-1" />
 
       <div className="flex items-center gap-1">
-        {['Inicio', 'Proyectos', 'Contacto'].map((item) => (
-          <a
-            key={item}
-            href={`#${item.toLowerCase()}`}
-            className="px-3 py-1.5 rounded-xl text-xs font-medium text-zinc-400 light:text-zinc-500 hover:text-white light:hover:text-zinc-900 hover:bg-zinc-800/50 light:hover:bg-zinc-100/50 transition-all"
-          >
-            {item}
-          </a>
-        ))}
+        <NavLink href="#inicio" icon={<Home size={18} />} label="Inicio" />
+        <NavLink href="#proyectos" icon={<Briefcase size={18} />} label="Proyectos" />
+        <NavLink href="#contacto" icon={<Mail size={18} />} label="Contacto" />
       </div>
 
       <div className="w-px h-4 bg-zinc-800 light:bg-zinc-200 mx-1" />
@@ -63,13 +57,15 @@ export default function Navbar() {
   );
 }
 
-function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
+function NavLink({ href, icon, label }: { href: string; icon: React.ReactNode; label: string }) {
   return (
     <a
       href={href}
-      className="px-3 py-1.5 rounded-xl text-xs font-medium text-zinc-400 light:text-zinc-600 hover:text-white light:hover:text-black hover:bg-white/5 light:hover:bg-black/5 transition-all duration-300"
+      className="px-3 py-1.5 rounded-xl text-xs font-medium text-zinc-400 light:text-zinc-500 hover:text-white light:hover:text-zinc-900 hover:bg-zinc-800/50 light:hover:bg-zinc-100/50 transition-all flex items-center justify-center"
+      aria-label={label}
     >
-      {children}
+      <span className="md:hidden">{icon}</span>
+      <span className="hidden md:block">{label}</span>
     </a>
   );
 }
