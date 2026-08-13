@@ -181,7 +181,7 @@ export const projects: ProjectData[] = [
     ],
     stack: ['Next.js', 'Framer Motion', 'Tailwind CSS', 'TypeScript'],
     color: 'from-sky-600 to-blue-950',
-    image: '/images/mockups/coal_cargo.webp',
+    image: '/images/mockups/banca_movil.webp',
     github: 'https://github.com/Jackson-sch',
     badge: 'FinTech Mobile Concept',
     category: 'fintech'
