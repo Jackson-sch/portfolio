@@ -44,7 +44,7 @@ export default function Navbar() {
       <div className="w-px h-4 bg-zinc-800 light:bg-zinc-200 mx-1" />
 
       <div className="flex items-center gap-1">
-        <SocialLink href="https://github.com" icon={<Github size={16} />} />
+        <SocialLink href="https://github.com/Jackson-sch" icon={<Github size={16} />} />
         <button
           onClick={toggleTheme}
           className="p-2 rounded-xl text-zinc-400 light:text-zinc-600 hover:text-white light:hover:text-black hover:bg-white/5 light:hover:bg-black/5 transition-all duration-300"
