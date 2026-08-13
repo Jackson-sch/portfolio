@@ -27,7 +27,7 @@ export const projects: ProjectData[] = [
     ],
     stack: ['Next.js 16', 'Prisma 7', 'PostgreSQL', 'Better Auth', 'Tailwind v4', 'Shadcn UI'],
     color: 'from-blue-600 to-indigo-900',
-    image: '/images/mockups/gym_os.jpg',
+    image: '/images/mockups/gym_os.webp',
     link: 'https://gym-os-seven-omega.vercel.app/',
     github: 'https://github.com/Jackson-sch/GymOs',
     badge: 'Gym OS SaaS',
@@ -45,7 +45,7 @@ export const projects: ProjectData[] = [
     ],
     stack: ['Next.js 16', 'Vercel AI SDK', 'Gemini IA', 'NextAuth v5', 'Prisma', 'MapLibre GL'],
     color: 'from-indigo-600 to-purple-900',
-    image: '/images/mockups/sistema_escolar.png',
+    image: '/images/mockups/sistema_escolar.webp',
     github: 'https://github.com/Jackson-sch',
     badge: 'AI Educational SaaS',
     category: 'ai'
@@ -62,7 +62,7 @@ export const projects: ProjectData[] = [
     ],
     stack: ['Next.js 16', 'Prisma 7', 'PostgreSQL', 'Better Auth', 'QR Lib', 'Tailwind v4'],
     color: 'from-blue-600 to-zinc-900',
-    image: '/images/mockups/coal_cargo.png',
+    image: '/images/mockups/coal_cargo.webp',
     github: 'https://github.com/Jackson-sch/sistema-transporte',
     badge: 'Logistics & Tracking',
     category: 'saas'
@@ -79,7 +79,7 @@ export const projects: ProjectData[] = [
     ],
     stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Recharts', 'PWA'],
     color: 'from-amber-600 to-orange-950',
-    image: '/images/mockups/maquinaria_pro.jpg',
+    image: '/images/mockups/maquinaria_pro.webp',
     github: 'https://github.com/Jackson-sch/maquinaria-pesada-pro',
     badge: 'Heavy Machinery Telemetry',
     category: 'telemetry'
@@ -96,7 +96,7 @@ export const projects: ProjectData[] = [
     ],
     stack: ['Next.js', 'React 19', 'Tailwind v4', 'PostgreSQL', 'Prisma'],
     color: 'from-yellow-600 to-amber-950',
-    image: '/images/mockups/sistema_joyeria.jpg',
+    image: '/images/mockups/sistema_joyeria.webp',
     github: 'https://github.com/Jackson-sch/joyeria',
     badge: 'Luxury Gold & Gem POS',
     category: 'fintech'
@@ -113,7 +113,7 @@ export const projects: ProjectData[] = [
     ],
     stack: ['Next.js 16', 'React 19', 'Tailwind v4', 'Prisma'],
     color: 'from-cyan-600 to-blue-900',
-    image: '/images/mockups/car_wash.jpg',
+    image: '/images/mockups/car_wash.webp',
     github: 'https://github.com/Jackson-sch/car-wash',
     badge: 'Automotive Service POS',
     category: 'saas'
@@ -130,7 +130,7 @@ export const projects: ProjectData[] = [
     ],
     stack: ['Next.js 16', 'React 19', 'Tailwind v4', 'Recharts', 'Prisma'],
     color: 'from-emerald-600 to-teal-950',
-    image: '/images/mockups/finance_flow.jpg',
+    image: '/images/mockups/finance_flow.webp',
     github: 'https://github.com/Jackson-sch/fintrax',
     badge: 'Corporate Finance SaaS',
     category: 'fintech'
@@ -147,7 +147,7 @@ export const projects: ProjectData[] = [
     ],
     stack: ['Bun', 'TypeScript', 'REST API', 'Vercel AI', 'Cloudflare'],
     color: 'from-fuchsia-600 to-purple-950',
-    image: '/images/mockups/bun_ai.jpg',
+    image: '/images/mockups/bun_ai.webp',
     github: 'https://github.com/Jackson-sch/bun-ai-api',
     badge: 'High Speed AI API',
     category: 'ai'
@@ -164,7 +164,7 @@ export const projects: ProjectData[] = [
     ],
     stack: ['Next.js 16', 'React 19', 'Prisma', 'Tailwind v4', 'HTML5 QR Scanner'],
     color: 'from-teal-600 to-slate-900',
-    image: '/images/mockups/control_asistencia.jpg',
+    image: '/images/mockups/control_asistencia.webp',
     github: 'https://github.com/Jackson-sch',
     badge: 'HR & Attendance OS',
     category: 'telemetry'
@@ -181,7 +181,7 @@ export const projects: ProjectData[] = [
     ],
     stack: ['Next.js', 'Framer Motion', 'Tailwind CSS', 'TypeScript'],
     color: 'from-sky-600 to-blue-950',
-    image: '/images/mockups/coal_cargo.png',
+    image: '/images/mockups/coal_cargo.webp',
     github: 'https://github.com/Jackson-sch',
     badge: 'FinTech Mobile Concept',
     category: 'fintech'
