@@ -1,15 +1,16 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import BentoPortfolio from "../components/BentoPortfolio";
+import Navbar from "../components/Navbar";
+import PortfolioApp from "../components/PortfolioApp";
 
-// You can customize these
 const name = "Jackson Sebastian";
-const role = "Desarrollador Fullstack";
-const subrole = "Especializado en Next.js, IA y Soluciones Reales.";
+const role = "Ingeniero Fullstack";
+const subrole = "Especializado en Next.js, Astro, Bun, IA y Sistemas Empresariales.";
 ---
 
 <Layout title="Jackson Sebastian | Portfolio">
-	<main class="pt-28 pb-12 px-4 md:py-24">
-		<BentoPortfolio client:load name={name} role={role} subrole={subrole} />
+	<Navbar client:load />
+	<main>
+		<PortfolioApp client:load name={name} role={role} subrole={subrole} />
 	</main>
 </Layout>

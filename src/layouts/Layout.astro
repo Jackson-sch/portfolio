@@ -8,10 +8,8 @@ interface Props {
 
 const {
 	title,
-	description = "Jackson Sebastian - Fullstack Developer Portfolio",
+	description = "Jackson Sebastian - Ingeniero Fullstack especializado en SaaS Multi-Tenant, POS SUNAT, IA y Sistemas Empresariales.",
 } = Astro.props;
-
-import Navbar from "../components/Navbar";
 ---
 
 <!doctype html>
@@ -19,7 +17,7 @@ import Navbar from "../components/Navbar";
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 
@@ -49,69 +47,17 @@ import Navbar from "../components/Navbar";
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
 			rel="stylesheet"
 		/>
 
 		<title>{title}</title>
 	</head>
-	<body class="selection:bg-blue-500/30 overflow-x-hidden">
-		<Navbar client:load />
-
-		<!-- Background Blobs -->
-		<div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-			<div
-				class="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-blob"
-			>
-			</div>
-			<div
-				class="absolute top-0 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-blob animation-delay-2000"
-			>
-			</div>
-			<div
-				class="absolute -bottom-32 left-1/3 w-96 h-96 bg-indigo-500/20 rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-blob animation-delay-4000"
-			>
-			</div>
-		</div>
-
-		<!-- Spotlight Background -->
-		<div
-			id="spotlight"
-			class="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300 opacity-0 md:opacity-100"
-			style="background: radial-gradient(600px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), var(--spotlight-color, rgba(59, 130, 246, 0.06)), transparent 40%);"
-		>
-		</div>
+	<body class="selection:bg-blue-500/25 overflow-x-hidden">
+		<!-- Subtle Architectural Grid Backdrop -->
+		<div class="fixed inset-0 -z-10 pointer-events-none bg-architectural-grid mask-[radial-gradient(ellipse_80%_60%_at_50%_0%,#000_55%,transparent_100%)]"></div>
+		<div class="fixed top-0 inset-x-0 h-96 -z-10 pointer-events-none bg-linear-to-b from-blue-500/[0.04] to-transparent light:from-blue-600/[0.03]"></div>
 
 		<slot />
-
-		<script>
-			const spotlight = document.getElementById("spotlight");
-
-			window.addEventListener("mousemove", (e) => {
-				if (spotlight) {
-					spotlight.style.setProperty("--mouse-x", `${e.clientX}px`);
-					spotlight.style.setProperty("--mouse-y", `${e.clientY}px`);
-					spotlight.style.opacity = "1";
-				}
-			});
-
-			window.addEventListener("mouseleave", () => {
-				if (spotlight) spotlight.style.opacity = "0";
-			});
-		</script>
 	</body>
 </html>
-
-<style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-</style>

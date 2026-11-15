@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Sun, Moon, Github, Linkedin, Mail, Home, Briefcase } from 'lucide-react';
-
+import { Sun, Moon, Github, Search, Menu, X } from 'lucide-react';
 import { Logo } from './Logo';
 
 export default function Navbar() {
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme') as 'dark' | 'light' | null;
@@ -24,61 +24,103 @@ export default function Navbar() {
     localStorage.setItem('theme', newTheme);
   };
 
+  const triggerSearch = () => {
+    window.dispatchEvent(new CustomEvent('portfolio:focus-search'));
+  };
+
+  const navItems = [
+    { href: '#destacados', label: 'Destacados' },
+    { href: '#catalogo', label: 'Catálogo' },
+    { href: '#stack', label: 'Stack' },
+    { href: '#contacto', label: 'Contacto' },
+  ];
+
   return (
-    <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 p-1.5 rounded-2xl bg-zinc-900/50 light:bg-white/70 backdrop-blur-xl border border-zinc-800 light:border-zinc-200 shadow-2xl animate-fade-in-down animate-duration-slow">
-      <a href="#" className="flex items-center gap-2 px-2 py-1.5 rounded-xl hover:bg-zinc-800/50 light:hover:bg-zinc-100/50 transition-colors group cursor-pointer" aria-label="Home">
-        <Logo />
-        <span className="text-xs font-bold tracking-tight text-white light:text-zinc-900 sr-only md:not-sr-only md:group-hover:opacity-100 transition-opacity duration-300 -ml-2 group-hover:ml-0">
-          SEBASTIAN
-        </span>
-      </a>
+    <header className="sticky top-0 z-40 w-full border-b border-border bg-background/80 backdrop-blur-xl">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+        {/* Brand */}
+        <a href="#inicio" className="flex items-center gap-2.5 group shrink-0">
+          <Logo />
+          <div className="flex flex-col">
+            <span className="text-sm font-semibold tracking-tight text-text-main leading-none">
+              Jackson Sebastian
+            </span>
+            <span className="text-[10px] font-mono text-text-muted mt-0.5">
+              Fullstack & AI Systems
+            </span>
+          </div>
+        </a>
 
-      <div className="w-px h-4 bg-zinc-800 light:bg-zinc-200 mx-1" />
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex items-center gap-1" aria-label="Navegación principal">
+          {navItems.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="px-3 py-1.5 rounded-lg text-xs font-medium text-text-muted hover:text-text-main hover:bg-surface-elevated transition-colors"
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
 
-      <div className="flex items-center gap-1">
-        <NavLink href="#inicio" icon={<Home size={18} />} label="Inicio" />
-        <NavLink href="#proyectos" icon={<Briefcase size={18} />} label="Proyectos" />
-        <NavLink href="#contacto" icon={<Mail size={18} />} label="Contacto" />
+        {/* Actions */}
+        <div className="flex items-center gap-2">
+          <button
+            onClick={triggerSearch}
+            className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg border border-border bg-surface hover:border-border-strong text-xs text-text-muted transition-colors"
+            aria-label="Buscar proyectos"
+          >
+            <Search size={13} />
+            <span>Buscar...</span>
+            <kbd className="px-1.5 py-0.5 text-[10px] font-mono rounded bg-surface-elevated border border-border">
+              Ctrl K
+            </kbd>
+          </button>
+
+          <a
+            href="https://github.com/Jackson-sch"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            className="p-2 rounded-lg border border-border bg-surface hover:border-border-strong text-text-muted hover:text-text-main transition-colors"
+          >
+            <Github size={16} />
+          </a>
+
+          <button
+            onClick={toggleTheme}
+            aria-label="Cambiar tema"
+            className="p-2 rounded-lg border border-border bg-surface hover:border-border-strong text-text-muted hover:text-text-main transition-colors"
+          >
+            {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+          </button>
+
+          <button
+            onClick={() => setMobileOpen((prev) => !prev)}
+            aria-label="Menú móvil"
+            className="md:hidden p-2 rounded-lg border border-border bg-surface text-text-muted hover:text-text-main transition-colors"
+          >
+            {mobileOpen ? <X size={16} /> : <Menu size={16} />}
+          </button>
+        </div>
       </div>
 
-      <div className="w-px h-4 bg-zinc-800 light:bg-zinc-200 mx-1" />
-
-      <div className="flex items-center gap-1">
-        <SocialLink href="https://github.com/Jackson-sch" icon={<Github size={16} />} />
-        <button
-          onClick={toggleTheme}
-          className="p-2 rounded-xl text-zinc-400 light:text-zinc-600 hover:text-white light:hover:text-black hover:bg-white/5 light:hover:bg-black/5 transition-all duration-300"
-          aria-label="Toggle theme"
-        >
-          {theme === 'dark' ? <Sun size={16} className="animate-spin-slow" /> : <Moon size={16} />}
-        </button>
-      </div>
-    </nav>
-  );
-}
-
-function NavLink({ href, icon, label }: { href: string; icon: React.ReactNode; label: string }) {
-  return (
-    <a
-      href={href}
-      className="px-3 py-1.5 rounded-xl text-xs font-medium text-zinc-400 light:text-zinc-500 hover:text-white light:hover:text-zinc-900 hover:bg-zinc-800/50 light:hover:bg-zinc-100/50 transition-all flex items-center justify-center"
-      aria-label={label}
-    >
-      <span className="md:hidden">{icon}</span>
-      <span className="hidden md:block">{label}</span>
-    </a>
-  );
-}
-
-function SocialLink({ href, icon }: { href: string; icon: React.ReactNode }) {
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="p-2 rounded-xl text-zinc-400 light:text-zinc-600 hover:text-white light:hover:text-black hover:bg-white/5 light:hover:bg-black/5 transition-all duration-300"
-    >
-      {icon}
-    </a>
+      {/* Mobile Nav */}
+      {mobileOpen && (
+        <div className="md:hidden border-t border-border bg-background px-4 py-3 space-y-1">
+          {navItems.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              onClick={() => setMobileOpen(false)}
+              className="block px-3 py-2 rounded-lg text-sm font-medium text-text-muted hover:text-text-main hover:bg-surface-elevated transition-colors"
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
+      )}
+    </header>
   );
 }
